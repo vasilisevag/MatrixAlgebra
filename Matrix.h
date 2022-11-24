@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <cstdint>
 #include <type_traits>
@@ -357,19 +359,3 @@ namespace mat{
         return out;
     }
 };
-
-int main(){
-    mat::DenseMatrix<double, 3, 3> rgb2yuv;
-    rgb2yuv[0][0] = 0.299;  rgb2yuv[0][1] = 0.587;  rgb2yuv[0][2] = 0.114; 
-    rgb2yuv[1][0] = -0.147; rgb2yuv[1][1] = -0.288; rgb2yuv[1][2] = 0.436; 
-    rgb2yuv[2][0] = 0.615;  rgb2yuv[2][1] = -0.514; rgb2yuv[2][2] = -0.10;
-
-    mat::Vector<int, 3> rgbPixel;
-    rgbPixel[0] = 255; rgbPixel[1] = 0; rgbPixel[2] = 0; // color = red
-
-    auto yuvPixel = rgb2yuv * rgbPixel;
-    
-    mat::DenseMatrix<double, 1, 5> v{5, 6, 7, 8, 9};
-    v = {1, 2, 3, 4, 5};
-    std::cout << -T(v)*-v;
-}
